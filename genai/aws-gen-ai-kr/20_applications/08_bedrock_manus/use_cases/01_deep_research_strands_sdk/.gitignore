@@ -1,0 +1,5 @@
+# Ignore modified architecture images that are not related to this project
+sagemaker/sm-scale-down-to-zero/imgs/Architecture.png
+sagemaker/sm-scale-down-to-zero/utils/imgs/Architecture.png
+sagemaker/sm-scale-down-to-zero/imgs/architecture.png
+sagemaker/sm-scale-down-to-zero/utils/imgs/architecture.png
