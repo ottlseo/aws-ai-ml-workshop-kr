@@ -4,6 +4,8 @@ import base64
 import random
 import logging
 import functools
+import sys
+import io
 from textwrap import dedent
 from IPython.display import Markdown, HTML, display
 from botocore.exceptions import ClientError
@@ -11,6 +13,34 @@ from botocore.exceptions import ClientError
 logging.basicConfig()
 logger = logging.getLogger('retry-bedrock-invocation')
 logger.setLevel(logging.INFO)
+
+def safe_input(prompt=""):
+    """한국어 입력을 안전하게 처리하는 함수"""
+    try:
+        # stdin 인코딩을 UTF-8로 설정 (이미 읽기 작업이 시작된 경우 예외 처리)
+        try:
+            if hasattr(sys.stdin, 'reconfigure'):
+                sys.stdin.reconfigure(encoding='utf-8')
+        except (UnicodeDecodeError, io.UnsupportedOperation):
+            # 이미 stdin이 사용 중인 경우 무시
+            pass
+        
+        if prompt:
+            print(prompt, end='', flush=True)
+        
+        # input() 함수 사용으로 변경 (더 안정적)
+        user_input = input()
+        
+        return user_input
+        
+    except UnicodeDecodeError as e:
+        print(f"한국어 입력 오류가 발생했습니다: {e}")
+        print("다시 시도해주세요.")
+        return safe_input(prompt)
+    except Exception as e:
+        print(f"입력 오류: {e}")
+        # fallback to regular input
+        return input(prompt if prompt else "")
 
 def retry(total_try_cnt=5, sleep_in_sec=5, retryable_exceptions=(ClientError,)):
     def decorator(func):

@@ -282,9 +282,10 @@ html_content = """
 <head>
     <meta charset="UTF-8">
     <title>분석 보고서</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         body {{
-            font-family: 'Nanum Gothic', sans-serif;
+            font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
             margin: 2cm;
             line-height: 1.5;
         }}
@@ -440,12 +441,15 @@ def is_korean_content(content):
 # 언어에 따른 CSS 설정
 if is_korean_content(html_content):
     css_text = '''
-    @font-face {{
-        font-family: 'Nanum Gothic';
-        src: url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-    }}
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+    
     body {{
-        font-family: 'Nanum Gothic', sans-serif;
+        font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+        font-weight: 400;
+    }}
+    h1, h2, h3, h4, h5, h6 {{
+        font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+        font-weight: 500;
     }}
     @page {{
         margin: 1cm;
@@ -454,12 +458,15 @@ if is_korean_content(html_content):
     '''
 else:
     css_text = '''
-    @font-face {{
-        font-family: 'Noto Sans';
-        src: url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
-    }}
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&display=swap');
+    
     body {{
         font-family: 'Noto Sans', sans-serif;
+        font-weight: 400;
+    }}
+    h1, h2, h3, h4, h5, h6 {{
+        font-family: 'Noto Sans', sans-serif;
+        font-weight: 500;
     }}
     @page {{
         margin: 1cm;

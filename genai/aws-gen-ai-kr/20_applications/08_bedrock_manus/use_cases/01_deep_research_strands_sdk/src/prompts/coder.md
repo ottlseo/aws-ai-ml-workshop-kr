@@ -122,7 +122,8 @@ print(df.describe())
     - plt.style.use('fivethirtyeight') - Web/media-friendly style
 - [CRITICAL] Must import lovelyplots at the beginning of visualization code:
     - import lovelyplots  # Don't omit this import
-- Use font: plt.rc('font', family='NanumGothic')
+- Use Korean font: plt.rc('font', family='Nanum Gothic')
+- Ensure minus sign displays correctly: plt.rc('axes', unicode_minus=False)
 - Apply grid lines to all graphs (alpha=0.3)
 - DPI: 150 (high resolution)
 - Set font sizes: title: 14-16, axis labels: 12-14, tick labels: 8-10, legend: 8-10
@@ -137,8 +138,9 @@ import lovelyplots  # [CRITICAL] ALWAYS import this
 # [CRITICAL] ALWAYS set a style
 plt.style.use(['ipynb', 'use_mathtext','colors5-light'])  # Choose one from the required styles
 
-# Set font and other required parameters
-plt.rc('font', family='NanumGothic')
+# Set Korean font and other required parameters
+plt.rc('font', family='Nanum Gothic')
+plt.rc('axes', unicode_minus=False)  # Ensure minus sign displays correctly
 plt.figure(figsize=(10, 6), dpi=150)
 
 # Rest of visualization code

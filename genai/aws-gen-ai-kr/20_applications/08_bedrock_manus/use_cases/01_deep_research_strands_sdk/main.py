@@ -7,6 +7,7 @@ import shutil
 import locale
 import streamlit as st
 from src.workflow import run_agent_workflow
+from src.utils.common_utils import safe_input
 
 # Set UTF-8 encoding for Korean input support
 if sys.platform.startswith('win'):
@@ -67,11 +68,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1: 
         user_query = " ".join(sys.argv[1:])
     else: 
-        try:
-            user_query = input("Enter your query (한국어 입력 가능): ")
-        except UnicodeDecodeError:
-            print("한국어 입력 오류가 발생했습니다. 다시 시도해주세요.")
-            user_query = input("Enter your query: ")
+        user_query = safe_input("Enter your query: ")
         
     result = run_agent_workflow(user_input=user_query, debug=False)
 

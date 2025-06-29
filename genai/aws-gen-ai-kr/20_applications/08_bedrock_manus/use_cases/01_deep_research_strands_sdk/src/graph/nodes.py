@@ -13,7 +13,7 @@ from src.config import TEAM_MEMBERS
 from .types import State
 
 from textwrap import dedent
-from src.utils.common_utils import get_message_from_string
+from src.utils.common_utils import get_message_from_string, safe_input
 
 from src.utils.strands_sdk_utils import strands_utils
 from src.tools import python_repl_tool, bash_tool, tavily_tool, crawl_tool
@@ -96,7 +96,7 @@ def human_feedback_node(state: State):
     
     # 인터럽트 발생시키기
     logger.info(f"{Colors.GREEN}{interrupt_message}{Colors.END}")
-    feedback = input()
+    feedback = safe_input("Please provide your answer: ")
 
     history = state.get("history", [])
     history.append({"agent":"human_feedback", "message": feedback})
