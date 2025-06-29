@@ -4,8 +4,23 @@ Entry point script for the LangGraph Demo.
 import os
 import sys
 import shutil
+import locale
 import streamlit as st
 from src.workflow import run_agent_workflow
+
+# Set UTF-8 encoding for Korean input support
+if sys.platform.startswith('win'):
+    # Windows
+    os.environ['PYTHONIOENCODING'] = 'utf-8'
+else:
+    # macOS/Linux
+    try:
+        locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+    except locale.Error:
+        try:
+            locale.setlocale(locale.LC_ALL, 'C.UTF-8')
+        except locale.Error:
+            pass
 
 def remove_artifact_folder(folder_path="./artifacts/"):
     """
@@ -49,8 +64,15 @@ if __name__ == "__main__":
 
     remove_artifact_folder()
 
-    if len(sys.argv) > 1: user_query = " ".join(sys.argv[1:])
-    else: user_query = input("Enter your query: ")
+    if len(sys.argv) > 1: 
+        user_query = " ".join(sys.argv[1:])
+    else: 
+        try:
+            user_query = input("Enter your query (한국어 입력 가능): ")
+        except UnicodeDecodeError:
+            print("한국어 입력 오류가 발생했습니다. 다시 시도해주세요.")
+            user_query = input("Enter your query: ")
+        
     result = run_agent_workflow(user_input=user_query, debug=False)
 
     # Print the conversation history

@@ -38,3 +38,9 @@ or
   - Switch to reporter if a final report needs to be written
   - Return "FINISH" if all necessary tasks have been completed
 - Always return "FINISH" after reporter has written the final report
+
+# Language Support
+- **IMPORTANT**: If the user's request is in Korean, ensure all team members think, process, and respond in Korean
+- **CRITICAL**: All internal reasoning, analysis, and thought processes should be conducted in the same language as the user's request
+- The final report should be written in the same language as the user's request
+- When delegating tasks, inform workers to use the appropriate language for their responses and thinking process

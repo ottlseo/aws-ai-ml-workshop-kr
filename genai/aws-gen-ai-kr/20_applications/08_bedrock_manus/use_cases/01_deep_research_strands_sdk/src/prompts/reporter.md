@@ -577,6 +577,7 @@ except subprocess.CalledProcessError as e:
 - Acknowledge any uncertainties in the information
 - Include only verifiable facts from the provided source materials
 - [CRITICAL] Maintain the same language as the user request
+- [CRITICAL] All analysis, reasoning, and report writing processes should be conducted in the same language as the user's request
 - Use only 'NanumGothic' as the Korean font
 - PDF generation must include all report sections and reference all image artifacts
 </notes>

@@ -287,4 +287,5 @@ print("Code has been saved to ./artifacts/solution.py")
   * Compare your analysis results with expectations based on research findings
   * Document any differences between research expectations and actual data analysis findings
 - [CRITICAL] Maintain the same language as the user request
+- [CRITICAL] All thinking processes, code comments, and analysis explanations should be in the same language as the user's request
 </note>

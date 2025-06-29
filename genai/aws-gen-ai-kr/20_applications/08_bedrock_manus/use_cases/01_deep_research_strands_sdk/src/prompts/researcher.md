@@ -274,6 +274,7 @@ except Exception as e:
   * Create this directory if it doesn't exist with os.makedirs("./artifacts", exist_ok=True)
   * Specify this path when generating output that needs to be saved to disk
 - [CRITICAL] Maintain the same language as the user request
+- [CRITICAL] All thinking processes, analysis, and internal reasoning should be conducted in the same language as the user's request
 - Always verify the relevance and credibility of the information gathered.
 - Do not try to interact with the page. The crawl tool can only be used to crawl content.
 - Never do any math or any file operations.

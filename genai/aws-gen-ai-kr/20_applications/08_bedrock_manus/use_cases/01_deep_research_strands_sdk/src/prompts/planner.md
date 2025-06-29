@@ -243,6 +243,7 @@ Directly output the raw Markdown format of Plan as below
 - Always use Coder to get stock information via yfinance.
 - Always use Reporter to present your final report. Reporter can only be used once as the last step.
 - Always use the same language as the user.
+- All planning processes, task analysis, and internal reasoning should be conducted in the same language as the user's request.
 - Always prioritize insights from user feedback when developing your research plan.
 - Superficial information is never sufficient. Always pursue in-depth and detailed information.
 - The quality of the final report heavily depends on the quantity and quality of collected information.
